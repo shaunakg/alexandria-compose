@@ -11,6 +11,6 @@ services:
     expose:
         - 80
     volumes:
-        - /config:/home/ubuntu/calibre/data
-        - /books:/home/ubuntu/calibre/books
+        - /home/ubuntu/calibre/data:/config
+        - /home/ubuntu/calibre/books:/books
     restart: unless-stopped
