@@ -9,5 +9,8 @@ services:
         - 'TZ=Australia/Melbourne'
         - 'DOCKER_MODS=linuxserver/calibre-web:calibrexq'
     expose:
-      - 80
+        - 80
+    volumes:
+        - /config:/home/ubuntu/calibre/data
+        - /books:/home/ubuntu/calibre/books
     restart: unless-stopped
