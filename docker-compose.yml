@@ -1,13 +1,13 @@
 version: "3.9"
 
 services:
-	web:
-		image: linuxserver/calibre-web
-		environmnet:
-			- 'PUID=1000'
-			- 'PGID=1000'
-			- 'TZ=Australia/Melbourne'
-			- 'DOCKER_MODS=linuxserver/calibre-web:calibrexq'
-		expose:
-			- 80
-		restart: unless-stopped
+  web:
+    image: linuxserver/calibre-web
+    environment:
+        - 'PUID=1000'
+        - 'PGID=1000'
+        - 'TZ=Australia/Melbourne'
+        - 'DOCKER_MODS=linuxserver/calibre-web:calibrexq'
+    expose:
+      - 80
+    restart: unless-stopped
