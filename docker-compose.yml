@@ -1,16 +1,24 @@
-version: "3.8"
-
+---
+version: "2.1"
 services:
-  web:
-    build: .
+  calibre-web:
+    image: linuxserver/calibre-web
+    container_name: calibre-web
     environment:
-        - 'PUID=1000'
-        - 'PGID=1000'
-        - 'TZ=Australia/Melbourne'
-        - 'DOCKER_MODS=linuxserver/calibre-web:calibrexq'
-    expose:
-        - 80
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - DOCKER_MODS=linuxserver/calibre-web:calibre #optional
+      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
     volumes:
-        - /home/ubuntu/calibre/data:/config
-        - /home/ubuntu/calibre/books:/books
+      - /home/ubuntu/calibre/data:/config
+      - /home/ubuntu/calibre/library:/books
+    ports:
+      - "80:80"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     restart: unless-stopped
