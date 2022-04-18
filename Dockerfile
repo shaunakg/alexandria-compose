@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-focal
+FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
 
 RUN \
     echo "**** install build packages ****" && \
@@ -30,22 +30,15 @@ RUN \
     python3-pkg-resources \
     calibre \
     unrar && \
-    echo "**** install calibre-web ****" && \
-    curl -o \
-    /tmp/calibre-web.tar.gz -L \
-    https://github.com/shaunakg/alexandria/archive/master.tar.gz && \
-    mkdir -p \
-    /app/calibre-web && \
-    tar xf \
-    /tmp/calibre-web.tar.gz -C \
-    /app/calibre-web --strip-components=1 && \
+    echo "**** cloning calibre-web into /app/calibre-web ****" && \
+    git clone https://github.com/shaunakg/alexandria.git /app/calibre-web && \
     cd /app/calibre-web && \
     pip3 install --no-cache-dir -U \
     pip && \
     pip install --no-cache-dir -U --ignore-installed --find-links https://wheel-index.linuxserver.io/ubuntu/ -r \
     requirements.txt -r \
     optional-requirements.txt && \
-    echo "***install kepubify" && \
+    echo "**** installing kepubify ****" && \
     if [ -z ${KEPUBIFY_RELEASE+x} ]; then \
     KEPUBIFY_RELEASE=$(curl -sX GET "https://api.github.com/repos/pgaskin/kepubify/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
@@ -81,3 +74,4 @@ RUN chmod +x /usr/lib/calibre/calibre/ebooks/pdf/html_writer.py
 # ports and volumes
 EXPOSE 80
 VOLUME /config
+
