@@ -1,10 +1,10 @@
 FROM ubuntu:20.04
 
 RUN \
-    echo "**** install build packages ****" && \
+    echo "**** installing calibre ****" && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install keyboard-configuration -y && \
-    apt-get install -y calibre
+    DEBIAN_FRONTEND=noninteractive apt-get install -y calibre
 
 COPY users.sqlite /srv/calibre/users.sqlite
 

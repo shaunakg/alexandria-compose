@@ -29,7 +29,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Australia/Melbourne
-      - PASSWORD=something
     volumes:
       - /home/ubuntu/calibre/data:/config
       - /home/ubuntu/calibre/library:/books
