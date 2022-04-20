@@ -22,3 +22,18 @@ services:
       retries: 3
       start_period: 40s
     restart: unless-stopped
+  calibre:
+    image: lscr.io/linuxserver/calibre
+    container_name: calibre
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - PASSWORD=something
+    volumes:
+      - /home/ubuntu/calibre/data:/config
+      - /home/ubuntu/calibre/library:/books
+    ports:
+      - 8080:8080
+      - 8081:8081
+    restart: unless-stopped
