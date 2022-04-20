@@ -4,7 +4,7 @@ RUN \
     echo "**** installing calibre ****" && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install keyboard-configuration \
-    libfontconfig libgl1-mesa-glx -y && \
+    libfontconfig libgl1-mesa-glx wget -y && \
     wget https://download.calibre-ebook.com/linux-installer.sh && \
     chmod +x linux-installer.sh && \
     ./linux-installer.sh
