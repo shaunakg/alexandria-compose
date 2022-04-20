@@ -2,12 +2,12 @@
 version: "2.1"
 services:
   calibre-web:
-    build: .
+    build: build-web/
     container_name: calibre-web
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Australia/Melbourne
       - DOCKER_MODS=linuxserver/calibre-web:calibre #optional
       - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
     volumes:
@@ -23,12 +23,12 @@ services:
       start_period: 40s
     restart: unless-stopped
   calibre:
-    image: lscr.io/linuxserver/calibre
+    build: build-calibre/
     container_name: calibre
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Australia/Melbourne
       - PASSWORD=something
     volumes:
       - /home/ubuntu/calibre/data:/config
