@@ -8,4 +8,4 @@ RUN \
 
 COPY users.sqlite /srv/calibre/users.sqlite
 
-CMD [ "calibre-server", "--userdb /srv/calibre/users.sqlite", "--enable-auth", "--port=8080", "--daemonize", "/books" ]
+CMD [ "calibre-server", "--userdb", "/srv/calibre/users.sqlite", "--enable-auth", "--port=8080", "--daemonize", "/books" ]
