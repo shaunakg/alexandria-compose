@@ -51,16 +51,16 @@ RUN \
     https://github.com/pgaskin/kepubify/releases/download/${KEPUBIFY_RELEASE}/kepubify-linux-arm64 && \
     echo "**** cleanup ****" && \
     apt-get -y purge \
-    g++ \
-    gcc \
-    git \
+    # g++ \
+    # gcc \
+    # git \
     libffi-dev \
     libjpeg-dev \
     libldap2-dev \
     libsasl2-dev \
     libxml2-dev \
     libxslt1-dev \
-    python3-pip \
+    # python3-pip \
     zlib1g-dev && \
     apt-get -y autoremove && \
     rm -rf \
