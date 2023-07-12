@@ -29,6 +29,9 @@ RUN \
     python3-minimal \
     python3-pkg-resources \
     calibre \
+    build-essentials \
+    python3-distutils \
+    python3-apt \
     unrar && \
     echo "**** cloning calibre-web into /app/calibre-web ****" && \
     git clone https://github.com/shaunakg/alexandria.git /app/calibre-web && \
