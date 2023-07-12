@@ -29,7 +29,7 @@ RUN \
     python3-minimal \
     python3-pkg-resources \
     calibre \
-    build-essentials \
+    build-essential \
     python3-distutils \
     python3-apt \
     unrar && \
